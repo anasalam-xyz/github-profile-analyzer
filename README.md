@@ -4,10 +4,10 @@ A Node.js and Express.js REST API that analyzes GitHub profiles using the GitHub
 
 ### Live API
 
-The deployed API is available at:
+The deployed API is available at: 
 
 ```text
-<todo>
+https://github-profile-analyzer.up.railway.app/
 ```
 
 ## Tech Stack
