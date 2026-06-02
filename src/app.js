@@ -1,10 +1,20 @@
-require("dotenv").config();
-const pool = require("./config/db");
+require('dotenv').config();
+const express = require('express');
+const cors = require('cors');
+const initDB = require('./config/initDB');
+const profileRoutes = require("./routes/profiles");
 
-pool.getConnection().then(conn => {
-  console.log("DB Connected.");
-  conn.release();
-}).catch(err => console.error("DB Error: ", err.message));
-const initDB = require("./config/initDB");
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.use(cors());
+app.use(express.json());
+app.use("/api", profileRoutes);
+
+app.get('/', (req, res) => {
+  res.json({ message: 'GitHub Profile Analyzer API' });
+});
+
 initDB();
-const express = require("express");
+
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

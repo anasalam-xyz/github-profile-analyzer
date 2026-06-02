@@ -17,7 +17,7 @@ const initDB = async () => {
       created_at_github DATETIME,
       analyzed_at DATETIME DEFAULT CURRENT_TIMESTAMP
     )
-  `)
+  `);
 
   await pool.query(`
     CREATE TABLE IF NOT EXISTS insights (
@@ -30,9 +30,9 @@ const initDB = async () => {
       recorded_at DATETIME DEFAULT CURRENT_TIMESTAMP,
       FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE
     )
-  `)
+  `);
 
-  console.log('Tables ready')
+  console.log('Tables ready');
 }
 
 module.exports = initDB;
